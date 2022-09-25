@@ -13,7 +13,7 @@
         pq.pop();
 
         if(vis[v]) continue;
-		        vis[v] = 1;
+	vis[v] = 1;
 
         for (auto [i, w] : adj[v]){
             d[i] = min(d[i], d[v] + w);
