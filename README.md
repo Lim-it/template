@@ -9,4 +9,5 @@ created template
 rename template to basic_template  
 added dijkstra  
            
-           
+2022/9/28:  
+added erdos_gallai(for graph realization problem)
