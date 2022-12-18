@@ -10,14 +10,16 @@
     d[0] = 0;
 
     while (!pq.empty()) {
-        int v = pq.top().second;
+        int u = pq.top().second;
         pq.pop();
 
-        if(vis[v]) continue;
-	vis[v] = true;
+        if(vis[u]) continue;
+        vis[u] = true;
 
-        for (auto [i, w] : adj[v]){
-            d[i] = min(d[i], d[v] + w);
-            pq.push({d[i], i});
+        for (auto [v, w] : adj[u]){
+            if(d[u] + w < d[v]){
+                d[v] = d[u] + w;
+                pq.push({d[v], v});
+            }
         }
     }
