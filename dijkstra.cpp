@@ -3,8 +3,9 @@
     //adjacency matrix format: vector<vector<pair<int, int>>>
     //store each edge in the index of the source, first is end point, second is weight 
     
-    priority_queue<pair<int, int>, vector<pair<ll, int>>, greater<>> pq;
-    vector<int> vis(2 * N, 0);
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
+    vector<int> d(N, INF);
+    vector<bool> vis(N, false);
     pq.push({0, 0});
     d[0] = 0;
 
@@ -13,7 +14,7 @@
         pq.pop();
 
         if(vis[v]) continue;
-	vis[v] = 1;
+	vis[v] = true;
 
         for (auto [i, w] : adj[v]){
             d[i] = min(d[i], d[v] + w);
