@@ -13,4 +13,5 @@ added dijkstra
 added erdos_gallai(for graph realization problem)  
   
 2022/12/18:  
-updated dijkstra
+updated dijkstra  
+added dinic
