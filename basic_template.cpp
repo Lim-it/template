@@ -10,6 +10,10 @@ using namespace std;
 #define in(A, B, C) assert( B <= A && A <= C)
 #define mp make_pair
 #define pb push_back
+#define gt(t, i) get<i>(t)
+#define tomax(a, b) ((a) = max((a), (b)))
+#define tomin(a, b) ((a) = min((a), (b)))
+#define topos(a) ((a) = (((a) % MOD + MOD) % MOD))
 #define INF (int)1e9
 #define EPS 1e-9
 #define PI 3.1415926535897932384626433832795
@@ -26,6 +30,19 @@ typedef long int li;
 typedef unsigned long int uli;
 typedef long long int ll;
 typedef unsigned long long int  ull;
+
+
+ll ifloor(ll a, ll b){
+    if(b < 0) a *= -1, b *= -1;
+    if(a < 0) return (a - b + 1) / b;
+    else return a / b;
+}
+
+ll iceil(ll a, ll b){
+    if(b < 0) a *= -1, b *= -1;
+    if(a > 0) return (a + b - 1) / b;
+    else return a / b;
+}
 
 /******** own func *******/
 
