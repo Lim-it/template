@@ -16,6 +16,7 @@ public:
     queue<int> q;
     Dinic(int, int, int);
     void add_edge(int, int, int);
+    void reset()
     bool bfs();
     int dfs(int, int);
     int flow();
@@ -79,3 +80,11 @@ int Dinic::flow(){
     }
     return f;
 }
+
+void Dinic::reset(){
+    for(auto& ei : e){
+        ei.flow = 0;
+    }
+    return;
+}
+
