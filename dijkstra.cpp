@@ -1,6 +1,6 @@
     //dijkstra with prioirity queue. time complexity:O(ElogE)
     //N = size
-    //adjacency matrix format: vector<vector<pair<int, int>>>
+    //adjacency list format: vector<vector<pair<int, int>>>
     //store each edge in the index of the source, first is end point, second is weight 
     
     priority_queue<pair<int,int>, vector<pair<int,int>>, greater<>> pq;
