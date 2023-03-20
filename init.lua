@@ -172,8 +172,6 @@ require('lazy').setup({
     end,
   },
 
-  'kassio/neoterm',
-
   'p00f/clangd_extensions.nvim',
 
   {
