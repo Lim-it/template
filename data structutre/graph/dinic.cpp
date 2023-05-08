@@ -16,10 +16,10 @@ public:
     queue<int> q;
     Dinic(int, int, int);
     void add_edge(int, int, int);
-    void reset()
+    void min_cut();
     bool bfs();
     int dfs(int, int);
-    int flow();
+    long long flow();
 };
 
 Dinic::Dinic(int n, int s, int t): n(n), s(s), t(t) {
@@ -66,25 +66,52 @@ int Dinic::dfs(int u, int pushed){
     return 0;
 }
 
-int Dinic::flow(){
-    int f = 0;
+long long Dinic::flow(){
+    long long f = 0;
     while(1){
         fill(level.begin(), level.end(), -1);
         fill(ptr.begin(), ptr.end(), 0);
         level[s] = 0;
         q.push(s);
         if(!bfs()) break;
-        while(int push = dfs(s, INF)){
+        while(long long push = dfs(s, INF)){
             f += push;
         }
     }
     return f;
 }
 
-void Dinic::reset(){
-    for(auto& ei : e){
-        ei.flow = 0;
-    }
-    return;
-}
+void Dinic::min_cut(){
+    vector<bool> U(n, false);
+    vector<bool> visit(n, false);
+    queue<int> mq;
 
+    U[s] = true;
+    mq.push(s);
+
+    while(!mq.empty()){
+        int u = mq.front();
+        mq.pop();
+
+        if(visit[u]) continue;
+        visit[u] = true;
+
+        for(int edge : adj[u]){
+            if(e[edge].cap != e[edge].flow){
+                int v = e[edge].v;
+                mq.push(v);
+                U[v] = true;
+            }
+        }
+    }
+
+    for(int i = 0; i < n; i++){
+        if(U[i]){
+            for(int edge : adj[i]){
+                int v = e[edge].v;
+                if(!U[v])
+                    cout << i << ' ' << v << endl;
+            }
+        }
+    }
+}
